@@ -1862,22 +1862,22 @@ then select "OAuth client ID".
    If you chose "Internal" you don't need to publish and can skip straight to
    Step 11 but your destination drive must be part of the same Google Workspace.)
 
-10. Go to "Oauth consent screen" and then click "PUBLISH APP" button and confirm.
-   You will also want to add yourself as a test user.
+10. Go to "Oauth consent screen" and either:
+    1. Click the "PUBLISH APP" button, but don't verify your app.
+   
+        You are theoretically expected by Google to submit your app for verification and then wait
+        a few weeks for their response. However you don't need to actually verify your app. You can
+        keep your app perpetually in the "Needs verification" state and still use the client ID
+        and client secret with rclone. The only side effect is that you'll see a 
+        "Google hasn't verified this app" warning when you initially connect and config rclone, 
+        but you can safely disregard this message.
 
-11. Provide the noted client ID and client secret to rclone.
+    2. Leave your app in "Testing" and add yourself as a test user.
 
-Be aware that, due to the "enhanced security" recently introduced by
-Google, you are theoretically expected to "submit your app for verification"
-and then wait a few weeks(!) for their response; in practice, you can go right
-ahead and use the client ID and client secret with rclone, the only issue will
-be a very scary confirmation screen shown when you connect via your browser 
-for rclone to be able to get its token-id (but as this only happens during 
-the remote configuration, it's not such a big deal). Keeping the application in
-"Testing" will work as well, but the limitation is that any grants will expire
-after a week, which can be annoying to refresh constantly. If, for whatever
-reason, a short grant time is not a problem, then keeping the application in
-testing mode would also be sufficient.
+        Keeping the application in "Testing" has the limitation that any grants will expire
+        after a week, which can be annoying to refresh constantly.
+
+12. Provide the noted client ID and client secret to rclone.
 
 (Thanks to @balazer on github for these instructions.)
 
